@@ -14,7 +14,7 @@ public class PolishNotationTest {
     }
 
     @Test
-    public void shouldReturnTeen() throws StringIncorrectLengthException {
+    public void shouldReturnTeen() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("25*");
 
         int result = polishNotation.calculateResult();
@@ -22,7 +22,7 @@ public class PolishNotationTest {
     }
 
     @Test
-    public void shouldReturnThree() throws StringIncorrectLengthException {
+    public void shouldReturnThree() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("52-");
 
         int result = polishNotation.calculateResult();
@@ -30,7 +30,7 @@ public class PolishNotationTest {
     }
 
     @Test
-    public void shouldReturnMinusOne() throws StringIncorrectLengthException {
+    public void shouldReturnMinusOne() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("52(");
 
         int result = polishNotation.calculateResult();
@@ -38,7 +38,7 @@ public class PolishNotationTest {
     }
 
     @Test
-    public void shouldReturnFour() throws StringIncorrectLengthException {
+    public void shouldReturnFour() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("82/");
 
         int result = polishNotation.calculateResult();
@@ -46,7 +46,7 @@ public class PolishNotationTest {
     }
 
     @Test
-    public void shouldReturnThirteen() throws StringIncorrectLengthException {
+    public void shouldReturnThirteen() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("94+");
 
         int result = polishNotation.calculateResult();
@@ -54,7 +54,7 @@ public class PolishNotationTest {
     }
 
     @Test(expected = NumberFormatException.class)
-    public void shouldThrowNumberFormatException() throws StringIncorrectLengthException {
+    public void shouldThrowNumberFormatException() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("abc");
 
         int result = polishNotation.calculateResult();
@@ -62,7 +62,7 @@ public class PolishNotationTest {
 
 
     @Test(expected = StringIncorrectLengthException.class)
-    public void shouldThrowStringIncorrectLengthException() throws StringIncorrectLengthException {
+    public void shouldThrowStringIncorrectLengthException() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("123+");
         PolishNotation polishNotation2 = new PolishNotation("6+");
         PolishNotation polishNotation3 = new PolishNotation("6654+");
@@ -72,7 +72,12 @@ public class PolishNotationTest {
         int result2 = polishNotation3.calculateResult();
     }
 
+    @Test(expected = DivideByZeroException.class)
+    public void shouldThrowDivideByZeroException() throws StringIncorrectLengthException, DivideByZeroException {
+        PolishNotation polishNotation = new PolishNotation("30/");
 
+        int result = polishNotation.calculateResult();
+    }
 
 
 

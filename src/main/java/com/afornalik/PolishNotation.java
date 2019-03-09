@@ -10,7 +10,7 @@ public class PolishNotation {
         this.operation = operation;
     }
 
-    public int calculateResult() throws StringIncorrectLengthException {
+    public int calculateResult() throws StringIncorrectLengthException, DivideByZeroException {
         if (checkLength()) {
             return doOperations();
         }
@@ -25,7 +25,7 @@ public class PolishNotation {
         }
     }
 
-    private int doOperations() {
+    private int doOperations() throws DivideByZeroException{
         parseNumbers();
         String mark = operation.substring(2, 3);
         switch (mark) {
@@ -33,16 +33,26 @@ public class PolishNotation {
                 return firstNumber + secondNumber;
             }
             case "-": {
-                return firstNumber - secondNumber;
+                   return firstNumber - secondNumber;
             }
             case "/": {
-                return firstNumber / secondNumber;
+                if(checkIfCanDivide()) {
+                    return firstNumber / secondNumber;
+                }
             }
             case "*": {
                 return firstNumber * secondNumber;
             }
         }
         return -1;
+    }
+
+    private boolean checkIfCanDivide() throws DivideByZeroException {
+        if(secondNumber == 0){
+            throw new DivideByZeroException();
+        }else {
+            return true;
+        }
     }
 
     private void parseNumbers() throws NumberFormatException {
