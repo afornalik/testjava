@@ -18,9 +18,9 @@ public class PolishNotation {
     }
 
     public int result() {
-        int a =Integer.valueOf(operation.substring(0));
-        int b =Integer.valueOf(operation.substring(1));
-        String s = operation.substring(2);
+        int a = Integer.parseInt(operation.substring(0,1));
+        int b = Integer.parseInt(operation.substring(1,2));
+        String s = operation.substring(2,3);
         switch (s) {
             case "+" :{
                 return a+b;
