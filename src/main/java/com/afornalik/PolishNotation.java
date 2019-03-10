@@ -17,6 +17,7 @@ public class PolishNotation {
         return -1;
     }
 
+    //to delete
     public boolean checkLength() throws StringIncorrectLengthException {
         if (operation.length() != 3) {
             throw new StringIncorrectLengthException();

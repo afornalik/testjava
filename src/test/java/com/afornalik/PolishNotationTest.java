@@ -57,75 +57,27 @@ public class PolishNotationTest {
     public void shouldThrowNumberFormatException() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("abc");
 
-        int result = polishNotation.calculateResult();
+        polishNotation.calculateResult();
     }
-
 
     @Test(expected = StringIncorrectLengthException.class)
     public void shouldThrowStringIncorrectLengthException() throws StringIncorrectLengthException, DivideByZeroException {
-        PolishNotation polishNotation = new PolishNotation("123+");
         PolishNotation polishNotation2 = new PolishNotation("6+");
         PolishNotation polishNotation3 = new PolishNotation("6654+");
+        PolishNotation polishNotation = new PolishNotation("123+");
 
-        int result = polishNotation.calculateResult();
-        int result1 = polishNotation2.calculateResult();
-        int result2 = polishNotation3.calculateResult();
+        polishNotation.calculateResult();
+        polishNotation2.calculateResult();
+        polishNotation3.calculateResult();
     }
 
     @Test(expected = DivideByZeroException.class)
     public void shouldThrowDivideByZeroException() throws StringIncorrectLengthException, DivideByZeroException {
         PolishNotation polishNotation = new PolishNotation("30/");
 
-        int result = polishNotation.calculateResult();
+        polishNotation.calculateResult();
     }
 
-
-
-
-/*
-    @Test
-    public void shouldBeAddCharacter() {
-
-        PolishNotation polishNotation = new PolishNotation("12+");
-
-        String result  = polishNotation.checkCharacter();
-
-        Assert.assertEquals("+",result);
-
-    }
-
-    @Test
-    public void shouldBeSubtractCharacter() {
-
-        PolishNotation polishNotation = new PolishNotation("12-");
-
-        String result  = polishNotation.checkCharacter();
-
-        Assert.assertEquals("-",result);
-
-    }
-
-    @Test
-    public void shouldBeDivisionCharacter() {
-
-        PolishNotation polishNotation = new PolishNotation("12/");
-
-        String result  = polishNotation.checkCharacter();
-
-        Assert.assertEquals("/",result);
-
-    }
-
-    @Test
-    public void shouldBeMultiplyCharacter() {
-
-        PolishNotation polishNotation = new PolishNotation("12*");
-
-        String result  = polishNotation.checkCharacter();
-
-        Assert.assertEquals("*",result);
-
-    }*/
 
 
 }
